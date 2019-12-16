@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 header {
     height: 80px;
     background-color: black;
@@ -45,4 +49,12 @@ header {
     padding: 5px 10px;
     border: 0;
     border-radius: 2px;
+}
+
+.film-container {
+    margin-left: 30px;
+}
+
+.film-card {
+    margin-bottom: 30px;
 }

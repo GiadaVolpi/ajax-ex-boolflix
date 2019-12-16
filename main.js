@@ -26,7 +26,6 @@ $(document).ready (function () {
     function avviaRicerca () {
         // prendo il contenuto testuale dell'input
         var testoRicerca = $ ("#input-search").val ();
-        console.log(testoRicerca);
 
         // chiamo ajax per confrontare il testo ricercato con i titolo dei film
         $.ajax ({
@@ -40,23 +39,23 @@ $(document).ready (function () {
             "method": "GET",
             "success": function (data) {
                 var film = data.results;
-                console.log(film);
                 for (var i = 0; i < film.length; i++) {
+                    console.log(film[i]);
                     var titolo = film[i].title;
                     var titoloOriginale = film[i].original_title;
                     var linguaOriginale = film[i].original_language;
-                    var voto = film[i].vote_average;
+                    var votodi10 = film[i].vote_average;
+                    var votodi5 = Math.round (votodi10 / 2);
 
                     var context = {
                         titolo: titolo,
                         titoloOriginale: titoloOriginale,
                         linguaOriginale: linguaOriginale,
-                        voto: voto
+                        voto: votodi5
                     };
 
                     // utilizzo la funzione "template" con le proprietà assegnate nell'oggetto "context"
                     var html = template(context);
-                    console.log(html);
                     // appendo al mio html
                     $(".film-container").append (html);
                 }
@@ -66,6 +65,8 @@ $(document).ready (function () {
             }
         });
     }
+
+
 
 
 
