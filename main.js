@@ -1,6 +1,13 @@
 $(document).ready (function () {
 
+
     var urlBaseAPI = "https://api.themoviedb.org/3/"
+
+
+    // salvo in una variabile la struttura del film-template
+    var source = $("#film-template").html();
+    var template = Handlebars.compile (source);
+
 
     // avvio la ricerca premendo il tasto ENTER della tastiera
     $ ("#input-search").keypress (function (event) {
@@ -9,11 +16,11 @@ $(document).ready (function () {
         }
     });
 
+
     // avvio la ricerca cliccando sulla lente d'ingrandimento
     $ ("#button-search").click (function () {
         avviaRicerca();
     });
-
 
 
     function avviaRicerca () {
@@ -39,12 +46,21 @@ $(document).ready (function () {
                     var titoloOriginale = film[i].original_title;
                     var linguaOriginale = film[i].original_language;
                     var voto = film[i].vote_average;
-                    console.log(titolo);
-                    console.log(titoloOriginale);
-                    console.log(linguaOriginale);
-                    console.log(voto);
-                    }
-                },
+
+                    var context = {
+                        titolo: titolo,
+                        titoloOriginale: titoloOriginale,
+                        linguaOriginale: linguaOriginale,
+                        voto: voto
+                    };
+
+                    // utilizzo la funzione "template" con le proprietà assegnate nell'oggetto "context"
+                    var html = template(context);
+                    console.log(html);
+                    // appendo al mio html
+                    $(".film-container").append (html);
+                }
+            },
             "error": function () {
                 alert ("Error");
             }

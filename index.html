@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Boolflix</title>
+        <!-- script Handlebars -->
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <!-- meta per media query -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- link Fontaweson -->
@@ -26,8 +28,20 @@
                 <button id="button-search"><i class="fas fa-search"></i></button>
             </div>
         </header>
+        <main>
+            <div class="film-container"></div>
+        </main>
 
 
+
+        <script id="film-template" type="text/x-handlebars-template">
+            <div class="film-card">
+                <h2 class="film-title">{{ titolo }}</h2>
+                <h3 class="film-original-title">{{ titoloOriginale }}</h3>
+                <p class="film-language">{{ linguaOriginale }}</p>
+                <p class="film-vote">{{ voto }}</p>
+            </div>
+        </script>
 
     </body>
 </html>
