@@ -21,7 +21,7 @@
     <body>
         <header>
             <div class="logo-container">
-                <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png" alt="logo Netflix">
+                <img id="logo" src="logo-boolflix.png" alt="logo Netflix">
             </div>
             <div class="ricerca-container">
                 <input id="input-search" type="text" placeholder="search...">
@@ -29,7 +29,7 @@
             </div>
         </header>
         <main>
-            <div class="film-container"></div>
+            <div id="film-container"></div>
         </main>
 
 
@@ -37,9 +37,9 @@
         <script id="film-template" type="text/x-handlebars-template">
             <div class="film-card">
                 <h2 class="film-title">{{ titolo }}</h2>
-                <h3 class="film-original-title">{{ titoloOriginale }}</h3>
-                <p class="film-language">{{ linguaOriginale }}</p>
-                <p class="film-vote">{{ voto }}</p>
+                <h4 class="film-original-title">{{ titoloOriginale }}</h3>
+                <p class="film-language">{{{ linguaOriginale }}}</p>
+                <p class="film-vote">{{{ stelle }}}</p>
             </div>
         </script>
 

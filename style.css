@@ -23,7 +23,7 @@ header {
 }
 
 #logo {
-    height: 100%;
+    height: 70%;
     margin-left: 30px;
 }
 
@@ -51,10 +51,24 @@ header {
     border-radius: 2px;
 }
 
-.film-container {
+#film-container {
     margin-left: 30px;
 }
 
 .film-card {
     margin-bottom: 30px;
+}
+
+.white-star {
+    font-size: 25px;
+    color: #a3a3a3;
+}
+
+.yellow-star {
+    font-size: 25px;
+    color: #ffcc00;
+}
+
+.flag {
+    height: 50px;
 }
