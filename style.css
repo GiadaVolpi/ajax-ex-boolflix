@@ -51,6 +51,12 @@ header {
     border-radius: 2px;
 }
 
+main {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
 #film-container {
     margin-left: 30px;
 }
@@ -60,15 +66,15 @@ header {
 }
 
 .white-star {
-    font-size: 25px;
+    font-size: 15px;
     color: #a3a3a3;
 }
 
 .yellow-star {
-    font-size: 25px;
+    font-size: 15px;
     color: #ffcc00;
 }
 
 .flag {
-    height: 50px;
+    height: 35px;
 }
