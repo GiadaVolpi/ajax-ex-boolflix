@@ -36,8 +36,10 @@
 
         <script id="film-template" type="text/x-handlebars-template">
             <div class="film-card">
+                <img src="{{ cover }}" alt="copertina di {{ titolo }}">
                 <h2 class="film-title">{{ titolo }}</h2>
                 <h4 class="film-original-title">{{ titoloOriginale }}</h3>
+                <p class="tipologia">{{{ tipologia }}}</p>
                 <p class="film-language">{{{ linguaOriginale }}}</p>
                 <p class="film-vote">{{{ stelle }}}</p>
             </div>
