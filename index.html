@@ -12,7 +12,7 @@
         <!-- link x jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- Link Google Font -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat|Mali:400,700&display=swap" rel="stylesheet">
         <!-- link al file Javascript -->
         <script src="main.js" charset="utf-8"></script>
         <!-- link al foglio di stile -->
@@ -25,7 +25,7 @@
             </div>
             <div class="ricerca-container">
                 <input id="input-search" type="text" placeholder="search...">
-                <button id="button-search"><i class="fas fa-search"></i></button>
+                <button id="button-search"><i class="fas fa-search"></i> Search</button>
             </div>
         </header>
         <main>
@@ -36,12 +36,20 @@
 
         <script id="film-template" type="text/x-handlebars-template">
             <div class="film-card">
-                <img src="{{ cover }}" alt="copertina di {{ titolo }}">
-                <h2 class="film-title">{{ titolo }}</h2>
-                <h4 class="film-original-title">{{ titoloOriginale }}</h3>
-                <p class="tipologia">{{{ tipologia }}}</p>
-                <p class="film-language">{{{ linguaOriginale }}}</p>
-                <p class="film-vote">{{{ stelle }}}</p>
+                <div class="cover-container">
+                    <img class="cover" src="{{ cover }}" alt="copertina di {{ titolo }}">
+                </div>
+                <div class="film-data active">
+                    <p class="film-title">{{ titolo }}</p>
+                    <p class="film-original-title">{{ titoloOriginale }}</p>
+                    <p class="tipologia">TIPOLOGIA: {{{ tipologia }}}</p>
+                    <p class="film-language">{{{ linguaOriginale }}}</p>
+                    <p class="film-vote">VOTO: {{{ stelle }}}</p>
+                    <p class="film-description">clicca qui per leggere la trama del film</p>
+                </div>
+                <div class="film-description-container">
+                    <p class="description-content">{{{ trama }}}</p>
+                </div>
             </div>
         </script>
 

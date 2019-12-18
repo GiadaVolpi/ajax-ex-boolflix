@@ -67,9 +67,14 @@ $(document).ready (function () {
 
                         var poster = film[i].poster_path;
                         // compongo URL copertina
-                        var copertina = urlBaseCover + "w342/" + poster;
-                        console.log("questa è la copertina del film");
-                        console.log(copertina);
+                        var copertina = urlBaseCover + "w185/" + poster;
+
+                        var descrizione = film[i].overview;
+                        console.log(descrizione.length);
+                        var descrizioneEsistente = verificaDescrizione(descrizione);
+                        var descrizioneActive = visualizzaDescrizione (descrizioneEsistente);
+                        console.log(descrizioneActive);
+
 
                         var context = {
                             titolo: titolo,
@@ -77,7 +82,8 @@ $(document).ready (function () {
                             linguaOriginale: bandiera,
                             stelle: stelle,
                             tipologia: "film",
-                            cover: copertina
+                            cover: copertina,
+                            trama: descrizioneActive
                         };
 
                         // utilizzo la funzione "template" con le proprietà assegnate nell'oggetto "context"
@@ -109,7 +115,6 @@ $(document).ready (function () {
                 if (serieTV.length > 0) {
                     for (var i = 0; i < serieTV.length; i++) {
                         var titolo = serieTV[i].name;
-                        console.log(titolo);
                         var titoloOriginale = serieTV[i].original_name;
                         var linguaOriginale = serieTV[i].original_language;
                         var bandiera = stampaBandiera(linguaOriginale);
@@ -119,9 +124,14 @@ $(document).ready (function () {
 
                         var poster = serieTV[i].poster_path;
                         // compongo URL copertina
-                        var copertina = urlBaseCover + "w342/" + poster;
-                        console.log("questa è la copertina del film");
-                        console.log(copertina);
+                        var copertina = urlBaseCover + "w185/" + poster;
+
+                        var descrizione = serieTV[i].overview;
+                        console.log(descrizione.length);
+                        var descrizioneEsistente = verificaDescrizione(descrizione);
+                        var descrizioneActive = visualizzaDescrizione (descrizioneEsistente);
+                        console.log(descrizioneActive);
+
 
                         var context = {
                             titolo: titolo,
@@ -129,7 +139,8 @@ $(document).ready (function () {
                             linguaOriginale: bandiera,
                             stelle: stelle,
                             tipologia: "serie tv",
-                            cover: copertina
+                            cover: copertina,
+                            trama: descrizioneActive
                         };
 
                         var html = template(context);
@@ -150,38 +161,53 @@ $(document).ready (function () {
             if (i < nStelle) {
                 iconaStelle += '<i class="fas fa-star yellow-star"></i>';
             } else {
-                iconaStelle += '<i class="far fa-star white-star"></i>'
+                iconaStelle += '<i class="far fa-star white-star"></i>';
             }
         }
         return iconaStelle;
     } //chiusura function stampaStelle
 
 
-    function stampaBandiera(linguaOriginale) {
-        if (linguaOriginale == "en") {
+    function stampaBandiera(lingua) {
+        if (lingua == "en") {
             bandiera = '<img class="flag" src="flags/en.png" alt="inglese">';
-        } else if (linguaOriginale == "fr") {
+        } else if (lingua == "fr") {
             bandiera = '<img class="flag" src="flags/fr.png" alt="francese">';
-        } else if (linguaOriginale == "it") {
+        } else if (lingua == "it") {
             bandiera = '<img class="flag" src="flags/it.png" alt="italiano">';
-        } else if (linguaOriginale == "zh") {
+        } else if (lingua == "zh") {
             bandiera = '<img class="flag" src="flags/chn.png" alt="cinese">';
-        } else if (linguaOriginale == "de") {
+        } else if (lingua == "de") {
             bandiera = '<img class="flag" src="flags/de.png" alt="tedesco">';
-        } else if (linguaOriginale == "ja") {
+        } else if (lingua == "ja") {
             bandiera = '<img class="flag" src="flags/ja.png" alt="giapponese">';
-        } else if (linguaOriginale == "pl") {
+        } else if (lingua == "pl") {
             bandiera = '<img class="flag" src="flags/pl.png" alt="polacco">';
-        } else if (linguaOriginale == "ru") {
+        } else if (lingua == "ru") {
             bandiera = '<img class="flag" src="flags/ru.png" alt="russo">';
-        } else if (linguaOriginale == "es") {
+        } else if (lingua == "es") {
             bandiera = '<img class="flag" src="flags/es.png" alt="spagnolo">';
-        } else if (linguaOriginale == "pt") {
+        } else if (lingua == "pt") {
             bandiera = '<img class="flag" src="flags/pt.png" alt="portoghese">';
         }else {
-            return linguaOriginale;
+            return lingua;
         }
         return bandiera;
     } //chiusura function stampaBandiera
 
+    function verificaDescrizione(description) {
+        if (description.length != 0) {
+            $(".film-description").addClass("active");
+        }
+        return description;
+    }
+
+    function visualizzaDescrizione (description) {
+        $(".film-description").click (function () {
+            $(".film-data").removeClass ("active");
+            $(".film-description-container").addClass ("active")
+            $(".description-content").addClass ("active")
+        });
+        return description;
+    }
 });
